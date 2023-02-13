@@ -353,7 +353,7 @@ main {
 	}
 }
 
-/* checkboxes */
+/* checkbox */
 .password-generator-form input[type='checkbox'] {
 	--checkbox-size: 2rem;
 	position: relative;
@@ -367,6 +367,9 @@ main {
 .password-generator-form input[type='checkbox']:is(:hover, :focus),
 .password-generator-form input[type='checkbox'] + label {
 	cursor: pointer;
+}
+.password-generator-form input[type='checkbox']:is(:hover, :focus) {
+	border-color: var(--clr-primary-400);
 }
 
 .password-generator-form input[type='checkbox']:checked {
