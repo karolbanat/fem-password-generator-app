@@ -147,3 +147,18 @@ main {
 .flow > * + * {
 	margin-top: var(--flow-spacer, 1em);
 }
+
+/* Elements */
+.app-heading {
+	margin-block-end: 1.6rem;
+	font-size: var(--fz-logo);
+	text-align: center;
+	line-height: 1.33;
+	color: var(--clr-neutral-400);
+}
+
+@media only screen and (min-width: 48em) {
+	.app-heading {
+		margin-block-end: 3.2rem;
+	}
+}

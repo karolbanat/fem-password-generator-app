@@ -16,7 +16,7 @@
 
     <main>
         <div class="container">
-            <h1 class="primary-heading">Password Generator</h1>
+            <h1 class="app-heading">Password Generator</h1>
 
             <div class="password-output">
                 <output form="password-generator-form"
@@ -24,7 +24,7 @@
                         class="password-output__password">P4$5W0rD!</output>
                 <button aria-label="Copy password"
                         class="icon-button">
-                    <img src="./public/images/icon-copy.svg"
+                    <img src="./images/icon-copy.svg"
                          alt="">
                 </button>
             </div>
@@ -34,12 +34,13 @@
                 <div class="password-length-grid">
                     <label for="password-length"
                            class="password-generator-form__label">Character Length</label>
-                    <output class="password-generator-form__range-output">10</output>
+                    <output for="password-length"
+                            class="password-generator-form__range-output">10</output>
                     <input type="range"
                            min="1"
                            value="10"
                            max="20"
-                           name="passowrd-length"
+                           name="password-length"
                            id="password-length">
                 </div>
 
@@ -86,7 +87,7 @@
                     <p class="strength-output__label">Strength</p>
 
                     <div class="strength-output__strength">
-                        <span id="password-strength">Medium</span>
+                        <output id="password-strength">Medium</output>
                         <div class="strength-output__bar">
                             <div class="strength-output__bar-block"></div>
                             <div class="strength-output__bar-block"></div>
@@ -99,7 +100,7 @@
                 <button type="submit"
                         class="button">
                     <span>Generate</span>
-                    <img src="./public/images/icon-arrow-right.svg"
+                    <img src="./images/icon-arrow-right.svg"
                          alt="">
                 </button>
 
