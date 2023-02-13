@@ -21,7 +21,7 @@
             <div class="password-output">
                 <output form="password-generator-form"
                         id="generated-password"
-                        class="password-output__password">P4$5W0rD!</output>
+                        class="text-large">P4$5W0rD!</output>
                 <button aria-label="Copy password"
                         class="icon-button">
                     <img src="./images/icon-copy.svg"
@@ -31,17 +31,22 @@
 
             <form id="password-generator-form"
                   class="password-generator-form">
+
+                <!-- password length input -->
                 <div class="password-length-grid">
                     <label for="password-length"
-                           class="password-generator-form__label">Character Length</label>
+                           class="password-generator-form__label"
+                           data-area="label">Character Length</label>
                     <output for="password-length"
-                            class="password-generator-form__range-output">10</output>
+                            class="password-generator-form__range-output | text-large"
+                            data-area="output">10</output>
                     <input type="range"
                            min="1"
                            value="10"
                            max="20"
                            name="password-length"
-                           id="password-length">
+                           id="password-length"
+                           data-area="input">
                 </div>
 
                 <fieldset>

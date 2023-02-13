@@ -136,6 +136,12 @@ main {
 	white-space: nowrap;
 }
 
+/* Utility */
+.text-large {
+	font-size: var(--fz-700);
+	line-height: 1.3125;
+}
+
 /* Layout */
 .container {
 	--max-width: 54rem;
@@ -148,10 +154,41 @@ main {
 	margin-top: var(--flow-spacer, 1em);
 }
 
+.password-length-grid {
+	display: grid;
+	align-items: center;
+	grid-template-areas:
+		'label output'
+		'input input';
+	grid-template-columns: 1fr auto;
+	column-gap: 0.8rem;
+	row-gap: 1.2rem;
+}
+
+@media only screen and (min-width: 48em) {
+	.password-length-grid {
+		column-gap: 1.6rem;
+		row-gap: 2rem;
+	}
+}
+
+.password-length-grid > [data-area='label'] {
+	grid-area: label;
+}
+
+.password-length-grid > [data-area='output'] {
+	grid-area: output;
+}
+
+.password-length-grid > [data-area='input'] {
+	grid-area: input;
+}
+
 /* Elements */
 /* --- heading */
 .app-heading {
 	margin-block-end: 1.6rem;
+
 	font-size: var(--fz-logo);
 	text-align: center;
 	line-height: 1.33;
@@ -178,23 +215,15 @@ main {
 
 /* password output */
 .password-output {
-	/* layout */
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 
-	/* sizing */
 	margin-block-end: 1.6rem;
 	padding-inline: 1.6rem;
 	padding-block: 1.6rem;
 
-	/* appearance */
 	background-color: var(--clr-neutral-600);
-}
-
-.password-output__password {
-	font-size: var(--fz-700);
-	line-height: 1.3125;
 }
 
 @media only screen and (min-width: 48em) {
@@ -202,5 +231,79 @@ main {
 		margin-block-end: 2.4rem;
 		padding-inline: 3.2rem;
 		padding-block: 2rem;
+	}
+}
+
+/* password generator form */
+.password-generator-form {
+	display: grid;
+	gap: 3.2rem;
+
+	padding: 1.6rem;
+	background-color: var(--clr-neutral-600);
+}
+
+.password-generator-form__range-output {
+	color: var(--clr-primary-400);
+}
+
+/* --- range input */
+.password-generator-form input[type='range'] {
+	--thumb-size: 2.8rem;
+	--track-height: 0.8rem;
+	--track-colour: var(--clr-neutral-800);
+	appearance: none;
+	background: transparent;
+	cursor: pointer;
+}
+
+.password-generator-form input[type='range']::-webkit-slider-runnable-track {
+	height: var(--track-height);
+	background-color: var(--track-colour);
+}
+
+.password-generator-form input[type='range']::-moz-range-track {
+	height: var(--track-height);
+	background-color: var(--track-colour);
+}
+
+.password-generator-form input[type='range']::-webkit-slider-thumb {
+	appearance: none;
+	margin-top: -1rem;
+	width: var(--thumb-size);
+	height: var(--thumb-size);
+	border-radius: 50%;
+	background-color: var(--clr-neutral-200);
+	transition: outline 350ms ease-in-out, background-color 350ms ease-in-out;
+}
+
+.password-generator-form input[type='range']:is(:hover, :focus)::-webkit-slider-thumb {
+	background-color: var(--track-colour);
+	outline: 2px solid var(--clr-primary-400);
+}
+
+.password-generator-form input[type='range']::-moz-range-thumb {
+	appearance: none;
+	width: var(--thumb-size);
+	height: var(--thumb-size);
+	border: none;
+	border-radius: 50%;
+	transition: outline 350ms ease-in-out, background-color 350ms ease-in-out;
+}
+
+.password-generator-form input[type='range']:is(:hover, :focus)::-moz-range-thumb {
+	background-color: var(--track-colour);
+	outline: 2px solid var(--clr-primary-400);
+}
+
+.password-generator-form input[type='range']::-moz-range-progress {
+	background-color: var(--clr-primary-400);
+	height: var(--track-height);
+}
+
+@media only screen and (min-width: 48em) {
+	.password-generator-form {
+		padding: 3.2rem;
+		padding-block-start: 2.4rem;
 	}
 }
