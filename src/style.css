@@ -49,7 +49,7 @@ body {
 	min-height: 100vh;
 	font-size: 1.6rem;
 	text-rendering: optimizeSpeed;
-	line-height: 1.5;
+	line-height: 1.3125;
 }
 
 /* A elements that don't have a class get default styles */
@@ -139,7 +139,6 @@ main {
 /* Utility */
 .text-large {
 	font-size: var(--fz-700);
-	line-height: 1.3125;
 }
 
 /* Layout */
@@ -212,7 +211,8 @@ main {
 
 /* --- buttons */
 
-.icon-button {
+.icon-button,
+.button {
 	background: none;
 	border: none;
 	cursor: pointer;
@@ -220,6 +220,29 @@ main {
 
 .icon-button:is(:hover, :focus) {
 	filter: brightness(0) invert(1);
+}
+
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1.6rem;
+
+	padding: 1em;
+
+	text-transform: uppercase;
+	color: var(--clr-neutral-800);
+
+	background-color: var(--clr-primary-400);
+	border: 2px solid var(--clr-primary-400);
+
+	transition: background-color 350ms ease;
+}
+
+.button:is(:hover, :focus) {
+	--button-hover: var(--clr-primary-400);
+	color: var(--clr-primary-400);
+	background-color: transparent;
 }
 
 /* password output */
