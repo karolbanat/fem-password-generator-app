@@ -88,7 +88,7 @@ select {
 	}
 }
 
-/* Basic setup */
+/* Custom properties setup */
 :root {
 	/* colours */
 	--clr-primary-400: hsl(127deg 100% 82%);
@@ -111,6 +111,7 @@ select {
 	--fz-700: clamp(2.4rem, 1.5rem + 3vw, 3.2rem);
 }
 
+/* General */
 body {
 	font-family: var(--ff-primary);
 	font-size: var(--fz-400);
@@ -125,9 +126,19 @@ main {
 	place-items: center;
 }
 
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
 /* Layout */
 .container {
-	--max-width: 111rem;
+	--max-width: 54rem;
 	--padding-inline: 1.6rem;
 	margin-inline: auto;
 	width: min(var(--max-width), 100% - 2 * var(--padding-inline));
