@@ -149,6 +149,7 @@ main {
 }
 
 /* Elements */
+/* --- heading */
 .app-heading {
 	margin-block-end: 1.6rem;
 	font-size: var(--fz-logo);
@@ -160,5 +161,46 @@ main {
 @media only screen and (min-width: 48em) {
 	.app-heading {
 		margin-block-end: 3.2rem;
+	}
+}
+
+/* --- buttons */
+
+.icon-button {
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+.icon-button:is(:hover, :focus) {
+	filter: brightness(0) invert(1);
+}
+
+/* password output */
+.password-output {
+	/* layout */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	/* sizing */
+	margin-block-end: 1.6rem;
+	padding-inline: 1.6rem;
+	padding-block: 1.6rem;
+
+	/* appearance */
+	background-color: var(--clr-neutral-600);
+}
+
+.password-output__password {
+	font-size: var(--fz-700);
+	line-height: 1.3125;
+}
+
+@media only screen and (min-width: 48em) {
+	.password-output {
+		margin-block-end: 2.4rem;
+		padding-inline: 3.2rem;
+		padding-block: 2rem;
 	}
 }
