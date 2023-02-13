@@ -165,10 +165,19 @@ main {
 	row-gap: 1.2rem;
 }
 
+.flex-align-center {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+}
+
 @media only screen and (min-width: 48em) {
 	.password-length-grid {
 		column-gap: 1.6rem;
 		row-gap: 2rem;
+	}
+	.flex-align-center {
+		gap: 2.4rem;
 	}
 }
 
@@ -243,6 +252,13 @@ main {
 	background-color: var(--clr-neutral-600);
 }
 
+@media only screen and (min-width: 48em) {
+	.password-generator-form {
+		padding: 3.2rem;
+		padding-block-start: 2.4rem;
+	}
+}
+
 .password-generator-form__range-output {
 	color: var(--clr-primary-400);
 }
@@ -301,9 +317,50 @@ main {
 	height: var(--track-height);
 }
 
+/* fieldset */
+.password-generator-form fieldset {
+	display: grid;
+	gap: 1.6rem;
+	border: none;
+}
+
 @media only screen and (min-width: 48em) {
-	.password-generator-form {
-		padding: 3.2rem;
-		padding-block-start: 2.4rem;
+	.password-generator-form fieldset {
+		gap: 2rem;
 	}
+}
+
+/* checkboxes */
+.password-generator-form input[type='checkbox'] {
+	--checkbox-size: 2rem;
+	position: relative;
+	appearance: none;
+	width: var(--checkbox-size);
+	height: var(--checkbox-size);
+	border: 2px solid var(--clr-neutral-200, white);
+	transition: border-color 350ms ease, background-color 350ms ease;
+}
+
+.password-generator-form input[type='checkbox']:is(:hover, :focus),
+.password-generator-form input[type='checkbox'] + label {
+	cursor: pointer;
+}
+
+.password-generator-form input[type='checkbox']:checked {
+	background-color: var(--clr-primary-400);
+	border-color: var(--clr-primary-400);
+}
+
+.password-generator-form input[type='checkbox']::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: url('../images/icon-check.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	visibility: hidden;
+}
+
+.password-generator-form input[type='checkbox']:checked::before {
+	visibility: visible;
 }
