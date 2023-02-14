@@ -282,8 +282,11 @@ main {
 	padding-inline: 1.6rem;
 	padding-block: 1.6rem;
 
-	word-break: break-all;
 	background-color: var(--clr-neutral-600);
+}
+
+.password-output output {
+	word-break: break-all;
 }
 
 @media only screen and (min-width: 48em) {
