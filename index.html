@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="./favicon-32x32.png">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Mentor | Password generator app</title>
+  <script type="module" crossorigin src="/fem-password-generator-app/assets/index-76ff5055.js"></script>
+  <link rel="stylesheet" href="/fem-password-generator-app/assets/index-f85c6c42.css">
+</head>
+
+<body>
+
+    <main>
+        <div class="container">
+            <h1 class="app-heading">Password Generator</h1>
+
+            <div class="password-output">
+                <output form="password-generator-form"
+                        id="generated-password"
+                        class="text-large">P4$5W0rD!</output>
+                <button aria-label="Copy password"
+                        id="password-copy-btn"
+                        class="icon-button copy-button">
+                    <img src="./images/icon-copy.svg"
+                         alt="">
+                </button>
+            </div>
+
+            <form id="password-generator-form"
+                  class="password-generator-form">
+
+                <!-- password length input -->
+                <div class="password-length-grid">
+                    <label for="password-length"
+                           data-area="label">Character Length</label>
+                    <output for="password-length"
+                            id="password-length-output"
+                            class="password-generator-form__range-output | text-large"
+                            data-area="output">10</output>
+                    <input type="range"
+                           min="4"
+                           value="10"
+                           max="20"
+                           name="password-length"
+                           id="password-length"
+                           data-area="input">
+                </div>
+
+                <fieldset>
+                    <legend class="visually-hidden">Characters</legend>
+                    <!-- uppercase letters -->
+                    <div class="flex-align-center">
+                        <input type="checkbox"
+                               name="uppercase-letters"
+                               id="uppercase-letters">
+                        <label for="uppercase-letters">Include Uppercase Letters</label>
+                    </div>
+
+                    <!-- lowercase letters -->
+                    <div class="flex-align-center">
+                        <input type="checkbox"
+                               name="lowercase-letters"
+                               id="lowercase-letters">
+                        <label for="lowercase-letters">Include Lowercase Letters</label>
+                    </div>
+
+                    <!-- numbers -->
+                    <div class="flex-align-center">
+                        <input type="checkbox"
+                               name="number-characters"
+                               id="number-characters">
+                        <label for="number-characters">Include Numbers</label>
+                    </div>
+
+                    <!-- symbols -->
+                    <div class="flex-align-center">
+                        <input type="checkbox"
+                               name="symbol-characters"
+                               id="symbol-characters">
+                        <label for="symbol-characters">Include Symbols</label>
+                    </div>
+                </fieldset>
+
+                <div id="strength-output"
+                     class="strength-output"
+                     data-strength="medium">
+                    <p class="strength-output__label">Strength</p>
+
+                    <div class="strength-output__strength">
+                        <output id="password-strength">Medium</output>
+                        <div class="strength-output__bar">
+                            <div class="strength-output__bar-block"></div>
+                            <div class="strength-output__bar-block"></div>
+                            <div class="strength-output__bar-block"></div>
+                            <div class="strength-output__bar-block"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit"
+                        class="button">
+                    <span>Generate</span>
+                    <svg width="12"
+                         height="12"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--button-hover, #24232C)"
+                              d="m5.106 12 6-6-6-6-1.265 1.265 3.841 3.84H.001v1.79h7.681l-3.841 3.84z" />
+                    </svg>
+                </button>
+
+            </form>
+        </div>
+    </main>
+
+    
+</body>
+
+</html>
