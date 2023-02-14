@@ -1,5 +1,7 @@
 import './style.css';
 
+import zxcvbn from 'zxcvbn';
+
 interface PasswordOptions {
 	length: number;
 	includeUppercase: boolean;
@@ -15,7 +17,6 @@ const NUMBERS: string = '1234567890';
 const SYMBOLS: string = '~`!@#$%^&*()_-+={[}]|:;"\'<,>.?/';
 
 /* elements */
-const passwordOutput: HTMLOutputElement = document.querySelector('#generated-password')!;
 const passwordGeneratorForm: HTMLFormElement = document.querySelector('#password-generator-form')!;
 const lengthInput: HTMLInputElement = passwordGeneratorForm.querySelector('#password-length')!;
 const lengthOutput: HTMLOutputElement = passwordGeneratorForm.querySelector('#password-length-output')!;
@@ -24,6 +25,10 @@ const lowercaseCheckbox: HTMLInputElement = passwordGeneratorForm.querySelector(
 const numbersCheckbox: HTMLInputElement = passwordGeneratorForm.querySelector('#number-characters')!;
 const symbolsCheckbox: HTMLInputElement = passwordGeneratorForm.querySelector('#symbol-characters')!;
 const passwordGeneratorSubmit: HTMLButtonElement = passwordGeneratorForm.querySelector('button[type="submit"]')!;
+const passwordOutput: HTMLOutputElement = document.querySelector('#generated-password')!;
+
+const strengthOutput: HTMLElement = document.querySelector('#strength-output')!;
+const strengthOutputLabel: HTMLOutputElement = strengthOutput.querySelector('#password-strength')!;
 
 /* event listeners */
 lengthInput.addEventListener('input', _ => {
@@ -38,13 +43,17 @@ passwordGeneratorSubmit.addEventListener('click', (e: Event) => {
 	const includeNumbers: boolean = numbersCheckbox.checked;
 	const includeSymbols: boolean = symbolsCheckbox.checked;
 
-	passwordOutput.innerText = generatePassword({
+	const password: string = generatePassword({
 		length,
 		includeUppercase,
 		includeLowercase,
 		includeNumbers,
 		includeSymbols,
 	});
+
+	passwordOutput.innerText = password;
+	const passwordScore: zxcvbn.ZXCVBNScore = estimatePasswordStrength(password);
+	updateStrengthBar(passwordScore);
 });
 
 function generatePassword({
@@ -70,4 +79,28 @@ function generatePassword({
 	}
 
 	return password;
+}
+
+function estimatePasswordStrength(password: string): zxcvbn.ZXCVBNScore {
+	const result = zxcvbn(password);
+	return result.score;
+}
+
+function updateStrengthBar(score: zxcvbn.ZXCVBNScore): void {
+	strengthOutput.dataset.strength = getStrength(score);
+	strengthOutputLabel.innerText = getStrengthLabel(score);
+}
+
+function getStrength(score: zxcvbn.ZXCVBNScore): string {
+	if (score >= 3) return 'strong';
+	if (score === 2) return 'medium';
+	if (score === 1) return 'weak';
+	return 'too-weak';
+}
+
+function getStrengthLabel(score: zxcvbn.ZXCVBNScore): string {
+	if (score >= 3) return 'strong';
+	if (score === 2) return 'medium';
+	if (score === 1) return 'weak';
+	return 'too weak!';
 }

@@ -9,9 +9,13 @@
 		"preview": "vite preview"
 	},
 	"devDependencies": {
+		"@types/zxcvbn": "^4.4.1",
 		"autoprefixer": "^10.4.13",
 		"postcss": "^8.4.21",
 		"typescript": "^4.9.3",
 		"vite": "^4.1.0"
+	},
+	"dependencies": {
+		"zxcvbn": "^4.4.2"
 	}
 }
