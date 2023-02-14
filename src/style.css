@@ -245,6 +245,31 @@ main {
 	background-color: transparent;
 }
 
+.copy-button {
+	position: relative;
+}
+
+.copy-button::before {
+	content: 'COPIED';
+	position: absolute;
+	top: -2.5rem;
+	right: 0;
+	color: var(--clr-primary-400);
+	text-transform: uppercase;
+}
+
+.copy-button:not(.copied)::before {
+	display: none;
+}
+
+@media only screen and (min-width: 30rem) {
+	.copy-button::before {
+		top: 50%;
+		right: 100%;
+		transform: translate(-1.6rem, -50%);
+	}
+}
+
 /* password output */
 .password-output {
 	display: flex;

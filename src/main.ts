@@ -18,8 +18,10 @@ const SYMBOLS: string = '~`!@#$%^&*()_-+={[}]|:;"\'<,>.?/';
 
 /* elements */
 const passwordGeneratorForm: HTMLFormElement = document.querySelector('#password-generator-form')!;
+
 const lengthInput: HTMLInputElement = passwordGeneratorForm.querySelector('#password-length')!;
 const lengthOutput: HTMLOutputElement = passwordGeneratorForm.querySelector('#password-length-output')!;
+
 const uppercaseCheckbox: HTMLInputElement = passwordGeneratorForm.querySelector('#uppercase-letters')!;
 const lowercaseCheckbox: HTMLInputElement = passwordGeneratorForm.querySelector('#lowercase-letters')!;
 const numbersCheckbox: HTMLInputElement = passwordGeneratorForm.querySelector('#number-characters')!;
@@ -29,6 +31,8 @@ const passwordOutput: HTMLOutputElement = document.querySelector('#generated-pas
 
 const strengthOutput: HTMLElement = document.querySelector('#strength-output')!;
 const strengthOutputLabel: HTMLOutputElement = strengthOutput.querySelector('#password-strength')!;
+
+const copyPasswordButton: HTMLButtonElement = document.querySelector('#password-copy-btn')!;
 
 /* event listeners */
 lengthInput.addEventListener('input', _ => {
@@ -55,6 +59,8 @@ passwordGeneratorSubmit.addEventListener('click', (e: Event) => {
 	const passwordScore: zxcvbn.ZXCVBNScore = estimatePasswordStrength(password);
 	updateStrengthBar(passwordScore);
 });
+
+copyPasswordButton.addEventListener('click', handlePasswordCopying);
 
 function generatePassword({
 	length = 8,
@@ -103,4 +109,15 @@ function getStrengthLabel(score: zxcvbn.ZXCVBNScore): string {
 	if (score === 2) return 'medium';
 	if (score === 1) return 'weak';
 	return 'too weak!';
+}
+
+function handlePasswordCopying() {
+	const copyText: string = passwordOutput.innerText;
+	navigator.clipboard.writeText(copyText).then(() => {
+		copyPasswordButton.classList.add('copied');
+
+		setTimeout(() => {
+			copyPasswordButton.classList.remove('copied');
+		}, 2000);
+	});
 }
