@@ -501,3 +501,26 @@ main {
 	border-color: var(--block-border-colour);
 	transition: none;
 }
+
+/* animations */
+@keyframes typing {
+	to {
+		left: 100%;
+	}
+}
+
+.typing-animation {
+	--steps: 9;
+	--one-char-animation-time: 0.2s;
+
+	position: relative;
+	width: max-content;
+}
+
+.typing-animation::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-color: var(--clr-neutral-600);
+	animation: typing calc(var(--one-char-animation-time) * var(--steps)) steps(var(--steps)) forwards;
+}

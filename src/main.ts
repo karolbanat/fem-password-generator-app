@@ -1,6 +1,6 @@
 import './style.css';
 
-import zxcvbn, { ZXCVBNScore } from 'zxcvbn';
+import zxcvbn from 'zxcvbn';
 
 interface PasswordOptions {
 	length: number;
@@ -54,8 +54,8 @@ passwordGeneratorSubmit.addEventListener('click', (e: Event) => {
 		includeNumbers,
 		includeSymbols,
 	});
+	insertPassword(password);
 
-	passwordOutput.innerText = password;
 	const passwordScore: zxcvbn.ZXCVBNScore = estimatePasswordStrength(password);
 	updateStrengthBar(passwordScore);
 });
@@ -85,6 +85,15 @@ function generatePassword({
 	}
 
 	return password;
+}
+
+function insertPassword(password: string): void {
+	passwordOutput.innerText = password;
+	passwordOutput.classList.add('typing-animation');
+	passwordOutput.style.setProperty('--steps', password.length.toString());
+	passwordOutput.addEventListener('animationend', () => passwordOutput.classList.remove('typing-animation'), {
+		once: true,
+	});
 }
 
 function estimatePasswordStrength(password: string): zxcvbn.ZXCVBNScore {
