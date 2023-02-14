@@ -1,4 +1,4 @@
-/* Generated with: https://gwfh.mranftl.com/fonts/ */
+/* Fonts generated with: https://gwfh.mranftl.com/fonts/ */
 @font-face {
 	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
 	font-family: 'JetBrains Mono';
@@ -423,6 +423,7 @@ main {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	gap: 1.6rem;
 
 	padding-inline: 1.6rem;
 	padding-block: 1.4rem;
@@ -445,6 +446,8 @@ main {
 .strength-output__strength {
 	display: flex;
 	align-items: center;
+	justify-content: flex-end;
+	flex-wrap: wrap;
 	gap: 1.6rem;
 
 	font-size: var(--fz-600);
