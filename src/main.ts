@@ -1,6 +1,6 @@
 import './style.css';
 
-import zxcvbn from 'zxcvbn';
+import zxcvbn, { ZXCVBNScore } from 'zxcvbn';
 
 interface PasswordOptions {
 	length: number;
@@ -93,21 +93,21 @@ function estimatePasswordStrength(password: string): zxcvbn.ZXCVBNScore {
 }
 
 function updateStrengthBar(score: zxcvbn.ZXCVBNScore): void {
-	strengthOutput.dataset.strength = getStrength(score);
 	strengthOutputLabel.innerText = getStrengthLabel(score);
+	strengthOutput.dataset.strength = getStrength(score);
 }
 
 function getStrength(score: zxcvbn.ZXCVBNScore): string {
-	if (score >= 3) return 'strong';
-	if (score === 2) return 'medium';
-	if (score === 1) return 'weak';
+	if (score >= 4) return 'strong';
+	if (score === 3) return 'medium';
+	if (score === 2) return 'weak';
 	return 'too-weak';
 }
 
 function getStrengthLabel(score: zxcvbn.ZXCVBNScore): string {
-	if (score >= 3) return 'strong';
-	if (score === 2) return 'medium';
-	if (score === 1) return 'weak';
+	if (score >= 4) return 'strong';
+	if (score === 3) return 'medium';
+	if (score === 2) return 'weak';
 	return 'too weak!';
 }
 
